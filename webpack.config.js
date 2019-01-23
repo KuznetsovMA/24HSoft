@@ -1,5 +1,6 @@
 let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+let MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 let conf = {
     "entry": [
@@ -24,6 +25,7 @@ let conf = {
                 test: /\.scss$/,
                 use: [
                     'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader'
                 ]
@@ -39,6 +41,9 @@ let conf = {
           filename: path.resolve(__dirname, 'dist/index.html'),
           template: path.resolve(__dirname, 'index.html'),
         }),
+        new MiniCssExtractPlugin({
+            filename: 'style.css'
+          })
       ]
 };
 
