@@ -33,6 +33,17 @@ let conf = {
             {
                 test: /\.html$/,
                 loader: 'html-loader'
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                        name: 'assets/images/[name].[ext]?[hash]'
+                    },
+                  }
+                ]
             }
         ]
     },
